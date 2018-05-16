@@ -20,14 +20,11 @@ USE_LISTEN_PORT=${LISTEN_PORT:-80}
 # Generate Nginx config first part using the environment variables
 echo "server {
     listen ${USE_LISTEN_PORT};
-    location / {
-        try_files \$uri @app;
-    }
-    location @app {
+    location /api {
         include uwsgi_params;
         uwsgi_pass unix:///tmp/uwsgi.sock;
     }
-    location $USE_STATIC_URL {
+    location / {
         alias $USE_STATIC_PATH;
     }" > /etc/nginx/conf.d/nginx.conf
 
