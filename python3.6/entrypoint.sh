@@ -26,7 +26,7 @@ echo "server {
         uwsgi_pass unix:///tmp/uwsgi.sock;
     }
     location / {
-        try_files \$uri \$uri/index.html index.html;
+        try_files \$uri \$uri/index.html /index.html;
     }" > /etc/nginx/conf.d/nginx.conf
 
 # Finish the Nginx config file
