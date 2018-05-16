@@ -25,7 +25,7 @@ echo "server {
         uwsgi_pass unix:///tmp/uwsgi.sock;
     }
     location / {
-        alias $USE_STATIC_PATH;
+        try_files \$uri;
     }" > /etc/nginx/conf.d/nginx.conf
 
 # If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
