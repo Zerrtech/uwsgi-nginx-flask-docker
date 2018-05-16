@@ -28,12 +28,6 @@ echo "server {
         try_files \$uri;
     }" > /etc/nginx/conf.d/nginx.conf
 
-# If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
-if [[ $STATIC_INDEX == 1 ]] ; then 
-echo "    location = / {
-        index $USE_STATIC_URL/index.html;
-    }" >> /etc/nginx/conf.d/nginx.conf
-fi
 # Finish the Nginx config file
 echo "}" >> /etc/nginx/conf.d/nginx.conf
 
